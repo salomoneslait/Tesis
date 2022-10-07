@@ -79,20 +79,20 @@
             <div class="row">
                 <form class="row g-3" action="" id="homeform">                    
                         <div class="col-sm-4">
-                            <select name="home" form = "homeform" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">                                
+                            <select name="home" form = "homeform" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" [(ngModel)]="home">                                
                                 <option selected>Seleccione el espacio que desea iluminar</option>
-                                <option value="Habitacion">Habitacion</option>
-                                <option value="Garaje">Garaje</option>
-                                <option value="Baño">Baño</option>
-                                <option value="Cocina">Cocina</option>
-                                <option value="Sala">Sala</option>
+                                <option value="1">Habitacion</option>
+                                <option value="2">Garaje</option>
+                                <option value="3">Baño</option>
+                                <option value="4">Cocina</option>
+                                <option value="5">Sala</option>
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <input name="range" form = "homeform" type="range" class="form-range" min="0" max="100" id="customRange">
+                            <input name="range" form = "homeform" type="range" class="form-range" min="0" max="100" id="customRange" [(ngModel)]="range">
                         </div>
                         <div class="col-sm-1">                           
-                            <input name="Color" form = "homeform" type="color" class="form-control form-control-color" id="ColorInput" value="#04087c" title="Seleccione tono">
+                            <input name="Color" form = "homeform" type="color" class="form-control form-control-color" id="ColorInput" value="#04087c" title="Seleccione tono" [(ngModel)]=color>
                         </div> 
                         <div class="col-sm-2">  
                             <div class="form-check form-switch">
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     <div class="col-sm-2">
-                      <input type="submit" class="btn btn-primary mb-3">
+                      <input type="submit" class="btn btn-primary mb-3" [(ngModel)]="range">
                     </div>
                 </form>  
             </div>                     
