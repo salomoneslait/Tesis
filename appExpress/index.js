@@ -17,7 +17,7 @@ app.post("/", (req, res) => {
    console.log(req.body);
 
    request
-   .post('http://192.168.1.14/luces')
+   .post('https://5130-2800-e2-bf80-c44-8491-9c10-1188-cf96.ngrok.io')// .post('http://192.168.1.14/luces')
    .send(req.body)
    .set('X-API-Key', 'foobar')
    .set('Accept', 'application/json')
