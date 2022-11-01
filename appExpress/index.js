@@ -9,10 +9,10 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "https://5130-2800-e2-bf80-c44-8491-9c10-1188-cf96.ngrok.io"
+let backend_url = process.env.BACKEND_URL || "https://12f1-2800-e2-bf80-c44-1937-f588-ebab-a577.ngrok.io"
 
 app.get('/', function(req, res){
-   res.render('form');
+   res.render('index');
 });
 // sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:boton 
 app.post("/", (req, res) => {
@@ -20,6 +20,21 @@ app.post("/", (req, res) => {
 
    request
    .post(`${backend_url}/luces`)
+   .send(req.body)
+   .set('X-API-Key', 'foobar')
+   .set('Accept', 'application/json')
+   .then(res => {
+      alert('yay got ' + JSON.stringify(res.body));
+   });
+
+   res.redirect("/");
+})
+
+app.post("/tomacorrientes", (req, res) => {
+   console.log(req.body);
+
+   request
+   .post(`${backend_url}/tomacorrientes`)
    .send(req.body)
    .set('X-API-Key', 'foobar')
    .set('Accept', 'application/json')
