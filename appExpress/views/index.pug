@@ -19,10 +19,104 @@
 		<div class="bg-image p-5 text-center shadow-1-strong  mb-5 text-white" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp');">
 			<h1 class="mb-3 h2">IoT Home Design</h1>
 
-			<p>
-				Aqui comienza un mundo de posibilidades
+			<p> Aqui comienza un mundo de posibilidades
 			</p>
 		</div>
+
+		<div class="d-flex bd-highlight p-4 gap-5"> 
+
+		- var incendio = true
+		- var puerta = false
+		- var proximidad = true
+
+		#incendio
+		if incendio 
+			<div class="container">
+				<div class="alert alert-success" role="alert">
+					<div class="row mt-3">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
+							<path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z"/>
+						</svg>
+					</div>
+					<div class="row">
+						<h4 class="display-5 text-center mt-4"> Alarma de incendio </h4>
+					</div>
+				</div>
+			</div>
+		else		
+			<div class="container">
+				<div class="alert alert-dark" role="alert">
+					<div class="row mt-3">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
+							<path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z"/>
+						</svg>
+					</div>
+					<div class="row">
+						<h4 class="display-5 text-center mt-4"> Alarma de incendio </h4>
+					</div>
+				</div>
+			</div>
+		#puerta
+		if puerta 
+			<div class="container">
+				<div class="alert alert-success" role="alert">
+					<div class="row mt-3">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+							<path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+							<path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+						</svg>				
+					</div>
+					<div class="row">
+						<h4 class="display-5 text-center mt-4"> Alarma de puerta </h4>
+					</div>
+				</div>
+			</div>
+		else
+			<div class="container">
+				<div class="alert alert-dark" role="alert">
+					<div class="row mt-3">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+							<path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+							<path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+						</svg>				
+					</div>
+					<div class="row">
+						<h4 class="display-5 text-center mt-4"> Alarma de puerta </h4>
+					</div>
+				</div>
+			</div>
+		#proximidad 
+		if proximidad
+			<div class="container">
+				<div class="alert alert-success" role="alert">
+					<div class="row mt-3">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+							<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+							<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+						</svg>		
+					</div>
+					<div class="row">
+						<h4 class="display-5 text-center mt-4"> Alarma de proximidad </h4>
+					</div>
+				</div>
+			</div>
+		else 
+			<div class="container">
+				<div class="alert alert-dark" role="alert">
+					<div class="row mt-3">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+							<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+							<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+						</svg>		
+					</div>
+					<div class="row">
+						<h4 class="display-5 text-center mt-4"> Alarma de proximidad </h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 
 		<div class="d-flex bd-highlight p-4 gap-5">
 			<div class="container border rounded">
@@ -95,69 +189,9 @@
 				
 		</div>
 
-		//- <!-- <div class="container my-5">
-		//- 	<center><h1 class="display-5">Control de iluminacion</h1></center>
-		//- 	<div class="row">
-		//- 		<form class="row g-3" id="homeform" action="/" method="post">
-		//- 			<div class="col-sm-4">
-		//- 				<select
-		//- 					name="habitacion"
-		//- 					form="homeform"
-		//- 					class="form-select form-select-lg mb-3"
-		//- 					aria-label=".form-select-lg example"
-		//- 					id="habitacion"
-		//- 				>
-		//- 					<option selected>Seleccione el espacio que desea iluminar</option>
-		//- 					<option value="1">Habitacion</option>
-		//- 					<option value="2">Garaje</option>
-		//- 					<option value="3">Baño</option>
-		//- 					<option value="4">Cocina</option>
-		//- 					<option value="5">Sala</option>
-		//- 				</select>
-		//- 			</div>
-		//- 			<div class="col-sm-3">
-		//- 				<input
-		//- 					name="brillo"
-		//- 					form="homeform"
-		//- 					type="range"
-		//- 					class="form-range"
-		//- 					min="0"
-		//- 					max="100"
-		//- 					id="brillo"
-		//- 				/>
-		//- 			</div>
-		//- 			<div class="col-sm-1">
-		//- 				<input
-		//- 					name="color"
-		//- 					form="homeform"
-		//- 					type="color"
-		//- 					class="form-control form-control-color"
-		//- 					id="color"
-		//- 					value="#04087c"
-		//- 					title="Seleccione tono"
-		//- 				/>
-		//- 			</div>
-		//- 			<div class="col-sm-2">
-		//- 				<div class="form-check form-switch">
-		//- 					<input
-		//- 						name="encendido"
-		//- 						form="homeform"
-		//- 						class="form-check-input"
-		//- 						type="checkbox"
-		//- 						role="switch"
-		//- 						id="endendido"
-		//- 						checked
-		//- 					/>
-		//- 					<label class="form-check-label" for="flexSwitchCheckDefault"
-		//- 						>OFF/ON</label
-		//- 					>
-		//- 				</div>
-		//- 			</div>
-		//- 			<div class="col-sm-2">
-		//- 				<input type="submit" class="btn btn-primary mb-3" />
-		//- 			</div>
-		//- 		</form>
-		//- 	</div>
-		//- </div> -->
+		<footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+			<span class="p-3 mb-3 mb-md-0">Willian Rueda, Salomon Eslait. 2022</span>
+		</footer>
+		
 	</body>
 </html>
