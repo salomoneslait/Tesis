@@ -13,8 +13,8 @@ int contconexion = 0;
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-const char* ssid = "Eslait";
-const char* password =  "Anadieseleda";
+const char* ssid = "Sebastian";
+const char* password =  "63275999v";
 
 String peticion;
 int red, green, blue;
@@ -40,7 +40,7 @@ void setup() {
     Serial.print(".");
   }
   if (contconexion < 50) {
-    IPAddress ip(192, 168, 1, 180);
+    IPAddress ip(192, 168, 20, 78);
     IPAddress gateway(192, 168, 1, 1);
     IPAddress subnet(255, 255, 255, 0);
     WiFi.config(ip, gateway, subnet);
@@ -127,9 +127,9 @@ void setup() {
     String estadoS = peticion.substring(peticion.indexOf("encendido") + 12, peticion.length() - 1);
     bool estado;
     if (estadoS == "ON") {
-      estado = HIGH;
-    } else if (estadoS == "OFF") {
       estado = LOW;
+    } else if (estadoS == "OFF") {
+      estado = HIGH;
     }
 
     switch (espacio){
