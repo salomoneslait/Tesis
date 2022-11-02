@@ -11,8 +11,8 @@ var http = require('http');
 
 //----------------------------------------------------------------------Twilio
 //Instalar mpm i twilio 
-const TWILIO_ID = 'AC0ae00199225e55bd898190cf8e2dca57';
-const TWILIO_SK = '99c848746ad595c3d9aaf533d06c553b';
+const TWILIO_ID = '';
+const TWILIO_SK = '';
 
 const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
