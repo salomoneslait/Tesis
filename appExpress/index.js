@@ -9,6 +9,30 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
+//----------------------------------------------------------------------Twilio
+//Instalar mpm i twilio 
+const TWILIO_ID = 'AC0ae00199225e55bd898190cf8e2dca57';
+const TWILIO_SK = '99c848746ad595c3d9aaf533d06c553b';
+
+const client=require('twilio')(TWILIO_ID,TWILIO_SK);
+
+if(fire=false){
+   client.messages.create({
+      body: 'Hay un incendio', 
+      from: 'whatsapp:+14155238886',       
+      to: 'whatsapp:+573015143981' 
+   }).then(message => console.log(message.sid));
+   
+}else{
+   client.messages.create({
+      body: 'No hay incendio', 
+      from: 'whatsapp:+14155238886',       
+      to: 'whatsapp:+573015143981' 
+   }).then(message => console.log(message.sid));
+}
+
+//------------------------------------------------------------------FIN Twilio
+
 let backend_url = process.env.BACKEND_URL || "https://12f1-2800-e2-bf80-c44-1937-f588-ebab-a577.ngrok.io"
 
 app.get('/', function(req, res){
