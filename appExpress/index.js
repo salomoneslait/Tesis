@@ -14,7 +14,8 @@ let backend_url = process.env.BACKEND_URL || "https://12f1-2800-e2-bf80-c44-1937
 app.get('/', function(req, res){
    res.render('index');
 });
-// sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:boton 
+
+// sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:latest 
 app.post("/", (req, res) => {
    console.log(req.body);
 
@@ -62,5 +63,18 @@ app.use(express.static('public'));
 app.post('/', function(req, res){
    console.log(req.body);
    res.send("recieved your request!");
+});
+
+const SECRET_KEY = "admin";
+var dados = [];
+var info;
+
+app.post('/Enviar',function(req, resp){
+   
+   info = { "Temperatura": req.query.Temperatura, "Time": new Date() }
+   dados.push(info);
+   console.log(info);
+   resp.send({ "Status": 200 });
+  
 });
 app.listen(3000);
