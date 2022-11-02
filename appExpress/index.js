@@ -27,7 +27,7 @@ if(fire=false){
    client.messages.create({
       body: 'No hay incendio', 
       from: 'whatsapp:+14155238886',       
-      to: 'whatsapp:+573015143981' 
+      to: 'whatsapp:+57311 2541022' 
    }).then(message => console.log(message.sid));
 }
 
