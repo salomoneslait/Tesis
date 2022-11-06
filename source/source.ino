@@ -5,7 +5,11 @@
 int PIN = 23;
 int NUMPIXELS = 5;
 int contconexion = 0;
+uint16_t valor_puerta=0, valor_presencia=0;
 
+
+#define hall 35      //Pin controlador de efecto hall
+#define piro 34      //Pin controlador de sensor de presencia
 #define Relay1 33     //Pin controlador Relay 1
 #define Relay2 25     //Pin controlador Relay 2
 #define Relay3 26     //Pin controlador Relay 3
@@ -26,6 +30,7 @@ void setup() {
   pixels.begin();
 
   //tomacorrientes
+  pinMode(piro, INPUT);
   pinMode(Relay1, OUTPUT);
   pinMode(Relay2, OUTPUT);
   pinMode(Relay3, OUTPUT);
@@ -157,6 +162,33 @@ void setup() {
   server.begin();
 }
 
+void loop() {
+  leerSensorMag();
+    Serial.println(valor_puerta);
+    delay(1000);
+  if(valor_puerta<500){
+    Serial.println("Puerta cerrada");
+  }else{
+    Serial.println("Puerta abierta");
+  }
+  leerSensorPiro();
+    Serial.println(valor_presencia);
+  if(valor_presencia== 1){
+    Serial.println("Presencia detectada");
+    valor_presencia= 0;
+  }else{
+    Serial.println("Sin presencia");
+  }
+}
+
+void leerSensorMag(){
+  valor_puerta = analogRead(hall);
+}
+
+void leerSensorPiro(){
+  valor_presencia = digitalRead(piro);
+}
+
 String converter(uint8_t *str) {
   return String((char *)str);
 }
@@ -183,7 +215,4 @@ int hexcolorToInt(char upper, char lower)
   lVal = lVal > 64 ? lVal - 55 : lVal - 48;
   // Serial.println(uVal+lVal);
   return uVal + lVal;
-}
-
-void loop() {
 }
