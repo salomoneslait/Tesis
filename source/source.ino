@@ -8,17 +8,6 @@
 
 
 
-//--------------------------
-
-
-
-
-
-
-
-
-//--------------------------
-
 void setup() {
   
   frontUrl = "34.74.122.46:3000";
@@ -27,6 +16,7 @@ void setup() {
   pixels.begin();
 
   //tomacorrientes
+  pinMode(piro, INPUT);
   pinMode(Relay1, OUTPUT);
   pinMode(Relay2, OUTPUT);
   pinMode(Relay3, OUTPUT);
@@ -54,4 +44,8 @@ void loop() {
 
   my_homekit_loop();
   delay(10);
+
+  //sensor 
+  SensorMag();
+  SensorPiro();
 }

@@ -12,10 +12,11 @@ var http = require('http');
 let backend_url = process.env.BACKEND_URL || "http://192.168.1.180"
 
 var inc = 'false';
+var magB = false;
+var piroB = false
 
 app.get('/', function(req, res){
-   let incB = (inc.toLowerCase() === 'true');
-   res.render('index',{incendio:incB ,puerta:false , proximidad:false});
+   res.render('index',{incendio:true ,puerta:magB , proximidad:piroB});
 });
 
 // sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:latest 
@@ -69,10 +70,31 @@ var info;
 
 app.post('/Enviar',function(req, res){
    
-   inc = req.query.Temperatura
-   info = { "Temperatura": req.query.Temperatura, "Time": new Date() }
-   dados.push(info);
-   console.log(info);
+   mag = req.query.mag;
+   let magB = (mag.toLowerCase() === 'true');
+   piro = req.query.piro;
+   let piroB = (piro.toLowerCase() === 'true');
+   
+   console.log(magB);
+   console.log(piroB);
+
+   //----------------------------------------------------------------------Twilio
+   //Instalar mpm i twilio 
+   const TWILIO_ID = '';
+   const TWILIO_SK = '';
+
+   const client=require('twilio')(TWILIO_ID,TWILIO_SK);
+
+   if(piro=true){
+      client.messages.create({
+         body: 'sensor de presencia activo', 
+         from: 'whatsapp:+14155238886',       
+         to: 'whatsapp:+573112541022' 
+      }).then(message => console.log(message.sid));
+   }
+
+//------------------------------------------------------------------FIN Twilio
+
    res.redirect("/");
   
 });

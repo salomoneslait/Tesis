@@ -161,7 +161,7 @@ void Enviar(){
   HTTPClient http;
   http.addHeader("Content-Type", "text/plain");
   //url = "http://192.168.15.32/Enviar?Temperatura="+(String)temperatura+"&Senha=admin";//IP NodeJS
-  url = "http://"+frontUrl+"/Enviar?Temperatura="+var;//IP NodeJS
+  url = "http://"+frontUrl+"/Enviar?mag="+sensormag+"&piro="+presencia;//IP NodeJS
   Serial.println(url);
   http.begin(url.c_str());
   httpResponseCode = http.POST("");
@@ -174,7 +174,7 @@ void Enviar(){
 }
 
 //---Homekit
-void HSV2RGB(float h,float s,float v) {
+void HSV2RGB(int R, float h,float s,float v) {
 
   int i;
   float m, n, f;
@@ -183,7 +183,27 @@ void HSV2RGB(float h,float s,float v) {
   v/=100;
 
   if(s==0){
-    rgb_colors[0]=rgb_colors[1]=rgb_colors[2]=round(v*255);
+    switch(R){
+      case 0: //habitacion
+        rgb_colors[0]=rgb_colors[1]=rgb_colors[2]=round(v*255);
+      break;
+
+      case 1: //garaje
+        rgb_colors_2[0]=rgb_colors_2[1]=rgb_colors_2[2]=round(v*255);
+      break;
+
+      case 2: //baño
+        rgb_colors_3[0]=rgb_colors_3[1]=rgb_colors_3[2]=round(v*255);
+      break;
+
+      case 3: //cocina
+        rgb_colors_4[0]=rgb_colors_4[1]=rgb_colors_4[2]=round(v*255);
+      break;
+
+      case 4: //sala
+        rgb_colors_5[0]=rgb_colors_5[1]=rgb_colors_5[2]=round(v*255);
+      break;
+    }
     return;
   }
 
@@ -201,39 +221,239 @@ void HSV2RGB(float h,float s,float v) {
   switch (i) {
 
     case 0: case 6:
-      rgb_colors[0]=round(v*255);
-      rgb_colors[1]=round(n*255);
-      rgb_colors[2]=round(m*255);
+      switch(R){
+        case 0: //habitacion
+          rgb_colors[0]=round(v*255);
+          rgb_colors[1]=round(n*255);
+          rgb_colors[2]=round(m*255);
+        break;
+  
+        case 1: //garaje
+          rgb_colors_2[0]=round(v*255);
+          rgb_colors_2[1]=round(n*255);
+          rgb_colors_2[2]=round(m*255);
+        break;
+  
+        case 2: //baño
+          rgb_colors_3[0]=round(v*255);
+          rgb_colors_3[1]=round(n*255);
+          rgb_colors_3[2]=round(m*255);
+        break;
+  
+        case 3: //cocina
+          rgb_colors_4[0]=round(v*255);
+          rgb_colors_4[1]=round(n*255);
+          rgb_colors_4[2]=round(m*255);
+        break;
+  
+        case 4: //sala
+          rgb_colors_5[0]=round(v*255);
+          rgb_colors_5[1]=round(n*255);
+          rgb_colors_5[2]=round(m*255);
+        break;
+    }
+      
     break;
 
     case 1:
-      rgb_colors[0]=round(n*255);
-      rgb_colors[1]=round(v*255);
-      rgb_colors[2]=round(m*255);
+      switch(R){
+        case 0: //habitacion
+          rgb_colors[0]=round(n*255);
+          rgb_colors[1]=round(v*255);
+          rgb_colors[2]=round(m*255);
+        break;
+  
+        case 1: //garaje
+          rgb_colors_2[0]=round(n*255);
+          rgb_colors_2[1]=round(v*255);
+          rgb_colors_2[2]=round(m*255);
+        break;
+  
+        case 2: //baño
+          rgb_colors_3[0]=round(n*255);
+          rgb_colors_3[1]=round(v*255);
+          rgb_colors_3[2]=round(m*255);
+        break;
+  
+        case 3: //cocina
+          rgb_colors_4[0]=round(n*255);
+          rgb_colors_4[1]=round(v*255);
+          rgb_colors_4[2]=round(m*255);
+        break;
+  
+        case 4: //sala
+          rgb_colors_5[0]=round(n*255);
+          rgb_colors_5[1]=round(v*255);
+          rgb_colors_5[2]=round(m*255);
+        break;
+    }
+      
     break;
 
     case 2:
-      rgb_colors[0]=round(m*255);
-      rgb_colors[1]=round(v*255);
-      rgb_colors[2]=round(n*255);
+      switch(R){
+        case 0: //habitacion
+          rgb_colors[0]=round(m*255);
+          rgb_colors[1]=round(v*255);
+          rgb_colors[2]=round(n*255);
+        break;
+  
+        case 1: //garaje
+          rgb_colors_2[0]=round(m*255);
+          rgb_colors_2[1]=round(v*255);
+          rgb_colors_2[2]=round(n*255);
+        break;
+  
+        case 2: //baño
+          rgb_colors_3[0]=round(m*255);
+          rgb_colors_3[1]=round(v*255);
+          rgb_colors_3[2]=round(n*255);
+        break;
+  
+        case 3: //cocina
+          rgb_colors_4[0]=round(m*255);
+          rgb_colors_4[1]=round(v*255);
+          rgb_colors_4[2]=round(n*255);
+        break;
+  
+        case 4: //sala
+          rgb_colors_5[0]=round(m*255);
+          rgb_colors_5[1]=round(v*255);
+          rgb_colors_5[2]=round(n*255);
+        break;
+    }
+          
     break;
 
     case 3:
-      rgb_colors[0]=round(m*255);
-      rgb_colors[1]=round(n*255);
-      rgb_colors[2]=round(v*255);
+      switch(R){
+        case 0: //habitacion
+          rgb_colors[0]=round(m*255);
+          rgb_colors[1]=round(n*255);
+          rgb_colors[2]=round(v*255);
+        break;
+  
+        case 1: //garaje
+          rgb_colors_2[0]=round(m*255);
+          rgb_colors_2[1]=round(n*255);
+          rgb_colors_2[2]=round(v*255);
+        break;
+  
+        case 2: //baño
+          rgb_colors_3[0]=round(m*255);
+          rgb_colors_3[1]=round(n*255);
+          rgb_colors_3[2]=round(v*255);
+        break;
+  
+        case 3: //cocina
+          rgb_colors_4[0]=round(m*255);
+          rgb_colors_4[1]=round(n*255);
+          rgb_colors_4[2]=round(v*255);
+        break;
+  
+        case 4: //sala
+          rgb_colors_5[0]=round(m*255);
+          rgb_colors_5[1]=round(n*255);
+          rgb_colors_5[2]=round(v*255);
+        break;
+    }
+      
     break;
 
     case 4:
-      rgb_colors[0]=round(n*255);
-      rgb_colors[1]=round(m*255);
-      rgb_colors[2]=round(v*255);
+      switch(R){
+        case 0: //habitacion
+          rgb_colors[0]=round(n*255);
+          rgb_colors[1]=round(m*255);
+          rgb_colors[2]=round(v*255);
+        break;
+  
+        case 1: //garaje
+          rgb_colors_2[0]=round(n*255);
+          rgb_colors_2[1]=round(m*255);
+          rgb_colors_2[2]=round(v*255);
+        break;
+  
+        case 2: //baño
+          rgb_colors_3[0]=round(n*255);
+          rgb_colors_3[1]=round(m*255);
+          rgb_colors_3[2]=round(v*255);
+        break;
+  
+        case 3: //cocina
+          rgb_colors_4[0]=round(n*255);
+          rgb_colors_4[1]=round(m*255);
+          rgb_colors_4[2]=round(v*255);
+        break;
+  
+        case 4: //sala
+          rgb_colors_5[0]=round(n*255);
+          rgb_colors_5[1]=round(m*255);
+          rgb_colors_5[2]=round(v*255);
+        break;
+    }
+      
     break;
 
     case 5:
-      rgb_colors[0]=round(v*255);
-      rgb_colors[1]=round(m*255);
-      rgb_colors[2]=round(n*255);
+      switch(R){
+        case 0: //habitacion
+          rgb_colors[0]=round(v*255);
+          rgb_colors[1]=round(m*255);
+          rgb_colors[2]=round(n*255);
+        break;
+  
+        case 1: //garaje
+          rgb_colors_2[0]=round(v*255);
+          rgb_colors_2[1]=round(m*255);
+          rgb_colors_2[2]=round(n*255);
+        break;
+  
+        case 2: //baño
+          rgb_colors_3[0]=round(v*255);
+          rgb_colors_3[1]=round(m*255);
+          rgb_colors_3[2]=round(n*255);
+        break;
+  
+        case 3: //cocina
+          rgb_colors_4[0]=round(v*255);
+          rgb_colors_4[1]=round(m*255);
+          rgb_colors_4[2]=round(n*255);
+        break;
+  
+        case 4: //sala
+          rgb_colors_5[0]=round(v*255);
+          rgb_colors_5[1]=round(m*255);
+          rgb_colors_5[2]=round(n*255);
+        break;
+    }
+      
     break;
+  }
+}
+
+void SensorMag(){
+  valor_puerta = analogRead(hall);
+  Serial.println(valor_puerta);
+    delay(1000);
+  if(valor_puerta<500){
+    Serial.println("Puerta cerrada");
+    sensormag = "true";
+  }else{
+    Serial.println("Puerta abierta");
+    sensormag = "false";
+  }
+}
+
+void SensorPiro(){
+  valor_presencia = digitalRead(piro);
+  Serial.println(valor_presencia);
+  if(valor_presencia== 1){
+    Serial.println("Presencia detectada");
+    valor_presencia= 0;
+    presencia = "true";
+  }else{
+    Serial.println("Sin presencia");
+    presencia = "false";
   }
 }

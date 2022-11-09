@@ -23,13 +23,15 @@ float temperatura;
 String var;
 
 //homekit
+
+//habitacion
 bool received_sat = false;
 bool received_hue = false;
-
 bool is_on = false;
 float current_brightness =  100.0;
 float current_sat = 0.0;
 float current_hue = 0.0;
+int rgb_colors[3];
 
 //garaje
 bool received_sat_2 = false;
@@ -38,5 +40,42 @@ bool is_2_on = false;
 float current_brightness_2 =  100.0;
 float current_sat_2 = 0.0;
 float current_hue_2 = 0.0;
+int rgb_colors_2[3];
 
-int rgb_colors[3];
+//baño
+bool received_sat_3 = false;
+bool received_hue_3 = false;
+bool is_3_on = false;
+float current_brightness_3 =  100.0;
+float current_sat_3 = 0.0;
+float current_hue_3 = 0.0;
+int rgb_colors_3[3];
+
+//cocina
+bool received_sat_4 = false;
+bool received_hue_4 = false;
+bool is_4_on = false;
+float current_brightness_4 =  100.0;
+float current_sat_4 = 0.0;
+float current_hue_4 = 0.0;
+int rgb_colors_4[3];
+
+//sala 
+bool received_sat_5 = false;
+bool received_hue_5 = false;
+bool is_5_on = false;
+float current_brightness_5 =  100.0;
+float current_sat_5 = 0.0;
+float current_hue_5 = 0.0;
+int rgb_colors_5[3];
+
+
+
+
+//sensores 
+
+uint16_t valor_puerta=0, valor_presencia=0;
+String presencia, sensormag;
+
+#define hall 35      //Pin controlador de efecto hall
+#define piro 34      //Pin controlador de sensor de presencia
