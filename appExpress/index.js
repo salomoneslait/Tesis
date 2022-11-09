@@ -9,10 +9,13 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "https://12f1-2800-e2-bf80-c44-1937-f588-ebab-a577.ngrok.io"
+let backend_url = process.env.BACKEND_URL || "http://192.168.1.180"
+
+var inc = 'false';
 
 app.get('/', function(req, res){
-   res.render('index');
+   let incB = (inc.toLowerCase() === 'true');
+   res.render('index',{incendio:incB ,puerta:false , proximidad:false});
 });
 
 // sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:latest 
@@ -28,7 +31,7 @@ app.post("/", (req, res) => {
       alert('yay got ' + JSON.stringify(res.body));
    });
 
-   res.redirect("/");
+   res.redirect('/');
 })
 
 app.post("/tomacorrientes", (req, res) => {
@@ -42,8 +45,7 @@ app.post("/tomacorrientes", (req, res) => {
    .then(res => {
       alert('yay got ' + JSON.stringify(res.body));
    });
-
-   res.redirect("/");
+   res.redirect('/');
 })
 
 app.set('view engine', 'pug');
@@ -60,21 +62,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
-app.post('/', function(req, res){
-   console.log(req.body);
-   res.send("recieved your request!");
-});
-
 const SECRET_KEY = "admin";
 var dados = [];
 var info;
 
-app.post('/Enviar',function(req, resp){
+
+app.post('/Enviar',function(req, res){
    
+   inc = req.query.Temperatura
    info = { "Temperatura": req.query.Temperatura, "Time": new Date() }
    dados.push(info);
    console.log(info);
-   resp.send({ "Status": 200 });
+   res.redirect("/");
   
 });
 app.listen(3000);
