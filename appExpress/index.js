@@ -87,21 +87,21 @@ app.post('/Enviar',function(req, res){
    const TWILIO_SK = '';
    const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
-   if(piro==true){
+   if(piroB==true){
       client.messages.create({
          body: 'sensor de presencia activo', 
          from: 'whatsapp:+14155238886', 
          to: 'whatsapp:+573159268068'       
          // to: 'whatsapp:+573112541022' 
       }).then(message => console.log(message.sid));
-   } else if (mag==true){
+   } else if (magB==true){
       client.messages.create({
          body: 'sensor de puerta activo', 
          from: 'whatsapp:+14155238886',       
          to: 'whatsapp:+573159268068'       
          // to: 'whatsapp:+573112541022'  
       }).then(message => console.log(message.sid));
-   }else if(gas==true){
+   }else if(gasB==true){
       client.messages.create({
          body: 'sensor de gas activo', 
          to: 'whatsapp:+573159268068'       
