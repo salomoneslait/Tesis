@@ -49,9 +49,6 @@ void getRGB(String hexvalue) {
   red = hexcolorToInt(c[1], c[2]);
   green = hexcolorToInt(c[3], c[4]);
   blue = hexcolorToInt(c[5], c[6]);
-  //  Serial.print("REED: "); Serial.println(red);
-  //  Serial.print("green: "); Serial.println(green);
-  //  Serial.print("blue: "); Serial.println(blue);
 }
 
 void rutaLuces(){
@@ -161,7 +158,7 @@ void Enviar(){
   HTTPClient http;
   http.addHeader("Content-Type", "text/plain");
   //url = "http://192.168.15.32/Enviar?Temperatura="+(String)temperatura+"&Senha=admin";//IP NodeJS
-  url = "http://"+frontUrl+"/Enviar?mag="+sensormag+"&piro="+presencia;//IP NodeJS
+  url = "http://"+frontUrl+"/Enviar?mag="+sensormag+"&piro="+presencia+"&gas="+sensorHumo;//IP NodeJS
   Serial.println(url);
   http.begin(url.c_str());
   httpResponseCode = http.POST("");
@@ -455,5 +452,16 @@ void SensorPiro(){
   }else{
     Serial.println("Sin presencia");
     presencia = "false";
+  }
+}
+
+void SensorHumo(){
+   valor_humo = analogRead(s_mq2);
+  if(valor_humo>=1950){
+    Serial.print("Hay una fuga de gas");
+    sensorHumo = "true";
+  }
+  else{
+    sensorHumo = "false";
   }
 }

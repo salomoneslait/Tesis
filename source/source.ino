@@ -48,4 +48,5 @@ void loop() {
   //sensor 
   SensorMag();
   SensorPiro();
+  SensorHumo();
 }
