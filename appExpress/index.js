@@ -80,6 +80,7 @@ app.post('/Enviar',function(req, res){
    console.log(magB);
    console.log(piroB);
    console.log(gasB);
+   
 
    //----------------------------------------------------------------------Twilio
    //Instalar mpm i twilio 
