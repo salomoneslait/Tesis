@@ -9,7 +9,7 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "http://192.168.1.180"
+let backend_url = process.env.BACKEND_URL || "https://0e3f-2800-e2-bf80-c44-b92c-bacf-1997-7f6a.ngrok.io"
 
 var inc = 'false';
 var magB = false;
@@ -80,7 +80,7 @@ app.post('/Enviar',function(req, res){
    console.log(magB);
    console.log(piroB);
    console.log(gasB);
-   
+
 
    //----------------------------------------------------------------------Twilio
    //Instalar mpm i twilio 
