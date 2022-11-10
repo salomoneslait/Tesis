@@ -166,6 +166,8 @@ void Enviar(){
   if (httpResponseCode > 0) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
+  }else {
+    Serial.println("sin respuesta");
   }
   http.end();
 }

@@ -10,7 +10,7 @@
 
 void setup() {
   
-  frontUrl = "35.227.60.138:3000";
+  frontUrl = "34.138.10.189:3000";
 
   Serial.begin(115200);
   pixels.begin();
