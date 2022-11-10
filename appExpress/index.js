@@ -19,7 +19,7 @@ app.get('/', function(req, res){
    res.render('index',{incendio:true ,puerta:magB , proximidad:piroB});
 });
 
-// sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:latest 
+// sudo docker run -dit --env BACKEND_URL=https://0e3f-2800-e2-bf80-c44-b92c-bacf-1997-7f6a.ngrok.io -p 3000:3000 front:latest 
 app.post("/", (req, res) => {
    console.log(req.body);
 
@@ -90,20 +90,22 @@ app.post('/Enviar',function(req, res){
    if(piro==true){
       client.messages.create({
          body: 'sensor de presencia activo', 
-         from: 'whatsapp:+14155238886',       
-         to: 'whatsapp:+573112541022' 
+         from: 'whatsapp:+14155238886', 
+         to: 'whatsapp:+573159268068'       
+         // to: 'whatsapp:+573112541022' 
       }).then(message => console.log(message.sid));
    } else if (mag==true){
       client.messages.create({
          body: 'sensor de puerta activo', 
          from: 'whatsapp:+14155238886',       
-         to: 'whatsapp:+573112541022' 
+         to: 'whatsapp:+573159268068'       
+         // to: 'whatsapp:+573112541022'  
       }).then(message => console.log(message.sid));
    }else if(gas==true){
       client.messages.create({
          body: 'sensor de gas activo', 
-         from: 'whatsapp:+14155238886',       
-         to: 'whatsapp:+573112541022' 
+         to: 'whatsapp:+573159268068'       
+         // to: 'whatsapp:+573112541022'  
       }).then(message => console.log(message.sid));
    } else {
       console.log("sensores inactivos");

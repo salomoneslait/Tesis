@@ -34,19 +34,21 @@ void setup() {
   my_homekit_setup();
 }
 
+int espera = 5000;
+unsigned long tiempoActual = 0;
+
 void loop() {
-  var = "true";
-  Enviar();
-  delay(500);
-  var= "false";
-  Enviar();
-  delay(500);
 
   my_homekit_loop();
   delay(10);
-
+  
+  tiempoActual = millis();
+  while(millis() < tiempoActual+espera){}
+  
   //sensor 
   SensorMag();
   SensorPiro();
   SensorHumo();
+
+  Enviar();
 }
