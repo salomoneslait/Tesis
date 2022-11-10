@@ -74,23 +74,39 @@ app.post('/Enviar',function(req, res){
    let magB = (mag.toLowerCase() === 'true');
    piro = req.query.piro;
    let piroB = (piro.toLowerCase() === 'true');
+   gas = req.query.piro;
+   let gasB = (piro.toLowerCase() === 'true');
    
    console.log(magB);
    console.log(piroB);
+   console.log(gasB);
 
    //----------------------------------------------------------------------Twilio
    //Instalar mpm i twilio 
    const TWILIO_ID = '';
    const TWILIO_SK = '';
-
    const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
-   if(piro=true){
+   if(piro==true){
       client.messages.create({
          body: 'sensor de presencia activo', 
          from: 'whatsapp:+14155238886',       
          to: 'whatsapp:+573112541022' 
       }).then(message => console.log(message.sid));
+   } else if (mag==true){
+      client.messages.create({
+         body: 'sensor de puerta activo', 
+         from: 'whatsapp:+14155238886',       
+         to: 'whatsapp:+573112541022' 
+      }).then(message => console.log(message.sid));
+   }else if(gas==true){
+      client.messages.create({
+         body: 'sensor de gas activo', 
+         from: 'whatsapp:+14155238886',       
+         to: 'whatsapp:+573112541022' 
+      }).then(message => console.log(message.sid));
+   } else {
+      console.log("sensores inactivos");
    }
 
 //------------------------------------------------------------------FIN Twilio
