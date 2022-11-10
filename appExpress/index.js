@@ -9,7 +9,7 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "https://4b1f-2800-484-4f83-b79f-6dc5-a1b0-94c5-899e.ngrok.io"
+let backend_url = process.env.BACKEND_URL || "https://5e6d-2800-484-4f83-b79f-6dc5-a1b0-94c5-899e.ngrok.io"
 
 var gas = 'false';
 var mag = 'false';
