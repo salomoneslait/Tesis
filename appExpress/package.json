@@ -9,10 +9,10 @@
         "node-fetch": "^3.2.10",
         "pug": "^3.0.2",
         "request": "^2.88.2",
-        "superagent": "^8.0.3"
+        "superagent": "^8.0.3",
+        "twilio": "^3.83.2"
     },
     "devDependencies": {
         "nodemon": "^2.0.20"
     }
 }
-

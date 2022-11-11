@@ -9,17 +9,21 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "https://5e6d-2800-484-4f83-b79f-6dc5-a1b0-94c5-899e.ngrok.io"
+let backend_url = process.env.BACKEND_URL || "https://fb00-2800-484-4f83-b79f-64ec-472d-c0ad-6ea3.ngrok.io"
 
 var gas = 'false';
 var mag = 'false';
 var piro = 'false';
 
+var magB = false;
+var piroB = false;
+var gasB = false;
+
 app.get('/', function(req, res){
 
-   let magB = (mag.toLowerCase() === 'true');
-   let piroB = (piro.toLowerCase() === 'true');
-   let gasB = (gas.toLowerCase() === 'true');
+   //let magB = (mag.toLowerCase() === 'true');
+   //let piroB = (piro.toLowerCase() === 'true');
+   //let gasB = (gas.toLowerCase() === 'true');
 
    console.log(magB);
    console.log(piroB);
@@ -83,40 +87,43 @@ app.post('/Enviar',function(req, res){
    piro = req.query.piro;
    gas = req.query.gas;
    
-   console.log(mag);
-   console.log(piro);
-   console.log(gas);
+   console.log("mag: ",mag);
+   console.log("piro: ",piro);
+   console.log("gas: ",gas);
 
+   magB = (mag.toLowerCase() === 'true');
+   piroB = (piro.toLowerCase() === 'true');
+   gasB = (gas.toLowerCase() === 'true');
 
    //----------------------------------------------------------------------Twilio
-   //Instalar mpm i twilio 
-   // const TWILIO_ID = '';
-   // const TWILIO_SK = '';
-   // const client=require('twilio')(TWILIO_ID,TWILIO_SK);
+ // Instalar mpm i twilio 
+    const TWILIO_ID = '';
+    const TWILIO_SK = '';
+    const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
-   // if(piroB==true){
-   //    client.messages.create({
-   //       body: 'sensor de presencia activo', 
-   //       from: 'whatsapp:+14155238886', 
-   //       to: 'whatsapp:+573159268068'       
-   //       // to: 'whatsapp:+573112541022' 
-   //    }).then(message => console.log(message.sid));
-   // } else if (magB==true){
-   //    client.messages.create({
-   //       body: 'sensor de puerta activo', 
-   //       from: 'whatsapp:+14155238886',       
-   //       to: 'whatsapp:+573159268068'       
-   //       // to: 'whatsapp:+573112541022'  
-   //    }).then(message => console.log(message.sid));
-   // }else if(gasB==true){
-   //    client.messages.create({
-   //       body: 'sensor de gas activo', 
-   //       to: 'whatsapp:+573159268068'       
-   //       // to: 'whatsapp:+573112541022'  
-   //    }).then(message => console.log(message.sid));
-   // } else {
-   //    console.log("sensores inactivos");
-   // }
+     if(piroB==true){
+      client.messages.create({
+          body: 'sensor de presencia activo', 
+          from: 'whatsapp:+14155238886', 
+         // to: 'whatsapp:+573159268068'       
+          to: 'whatsapp:+573112541022' 
+       }).then(message => console.log(message.sid));
+    } else if (magB==true){
+       client.messages.create({
+          body: 'sensor de puerta activo', 
+          from: 'whatsapp:+14155238886',       
+         // to: 'whatsapp:+573159268068'       
+           to: 'whatsapp:+573112541022'
+       }).then(message => console.log(message.sid));
+    }else if(gasB==true){
+       client.messages.create({
+          body: 'sensor de gas activo', 
+          //to: 'whatsapp:+573159268068'       
+           to: 'whatsapp:+573112541022'  
+       }).then(message => console.log(message.sid));
+    } else {
+       console.log("sensores inactivos");
+    }
 
 //------------------------------------------------------------------FIN Twilio
 
