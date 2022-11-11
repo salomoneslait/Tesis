@@ -17,6 +17,7 @@ const char* password =  "Anadieseleda";
 //http
 String peticion;
 short int httpResponseCode;
+String httpRequestData,payload;
 String url;
 String frontUrl;
 float temperatura;
