@@ -10,7 +10,7 @@
 
 void setup() {
   
-  frontUrl = "34.138.10.189:3000";
+  frontUrl = "34.148.42.100:3000";
 
   Serial.begin(115200);
   pixels.begin();
@@ -36,6 +36,7 @@ void setup() {
 
 int espera = 5000;
 unsigned long tiempoActual = 0;
+String magg,piroo,gass;
 
 void loop() {
 
@@ -51,4 +52,6 @@ void loop() {
   SensorHumo();
 
   Enviar();
+
+  
 }

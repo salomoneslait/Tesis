@@ -11,7 +11,7 @@ void conexionWifi(){
   }
   if (contconexion < 50) {
     IPAddress ip(192, 168, 1, 180);
-    IPAddress gateway(192, 168, 1, 1);
+    IPAddress gateway(192, 168, 1, 254);
     IPAddress subnet(255, 255, 255, 0);
     WiFi.config(ip, gateway, subnet);
 
@@ -433,8 +433,8 @@ void HSV2RGB(int R, float h,float s,float v) {
 
 void SensorMag(){
   valor_puerta = analogRead(hall);
+  Serial.print("sensor magnetico:");
   Serial.println(valor_puerta);
-    delay(1000);
   if(valor_puerta<500){
     Serial.println("Puerta cerrada");
     sensormag = "true";
@@ -446,7 +446,6 @@ void SensorMag(){
 
 void SensorPiro(){
   valor_presencia = digitalRead(piro);
-  Serial.println(valor_presencia);
   if(valor_presencia== 1){
     Serial.println("Presencia detectada");
     valor_presencia= 0;
