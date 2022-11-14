@@ -120,7 +120,7 @@
 
 
 		<div class="d-flex bd-highlight p-4 gap-5">
-			<div class="container border rounded">
+			<div class="container border rounded ">
 				<div class="row">
 					<h2 class="display-5 text-center mt-4">Control de iluminacion</h2>
 				</div>    
@@ -152,10 +152,11 @@
 							
 						</div>
 				
-						<div class="row d-grip mt-2 p-3"></div>
+						<div class="row d-grip mt-2 p-3">
 							<input type="submit" class="btn btn-primary mb-3" />
 						</div>
 					</form>
+				</div>
 			</div>
 
 			<div class="container border rounded">
@@ -183,11 +184,46 @@
 
 						<div class="row d-grip mt-5 p-3">
 							<input type="submit" class="btn btn-primary mb-3" />
-					</div>
-							</div>
-					</div>
+						</div>
+					</form>	
+				</div>
+			</div>
+		</div>
+
+		<div class="d-flex bd-highlight p-4 gap-5">
+			<div class="container border rounded">
+				<div class="row">
+					<h2 class="display-5 text-center mt-4">Control puerta de garaje</h2>
+				</div>  
+				<div class="row p-3">
+					<form class="row g-3" id="garajeform" action="/" method="post">  
+						<select	name="encendido" form="garajeform" class="form-select form-select-lg mb-4" aria-label=".form-select-lg example" id="encendido"	>
+							<option selected value="ON">Encendido</option>
+							<option value="OFF">Apagado</option>
+						</select>
+						<div class="row d-grip mt-2 p-3">
+							<input type="submit" class="btn btn-primary mb-3" />
+						</div>
 					</form>
-				
+				</div>	
+			</div>
+
+			<div class="container border rounded">
+				<div class="row">
+					<h2 class="display-5 text-center mt-4">Control de alarma</h2>
+				</div>  
+				<div class="row p-3">
+					<form class="row g-3" id="alarmaform" action="/" method="post">  
+						<select	name="encendido" form="alarmaform" class="form-select form-select-lg mb-4" aria-label=".form-select-lg example" id="encendido"	>
+							<option selected value="ON">Encendido</option>
+							<option value="OFF">Apagado</option>
+						</select>	
+						<div class="row d-grip mt-2 p-3">
+							<input type="submit" class="btn btn-primary mb-3" />
+						</div>
+					</form>
+				</div>				
+			</div>
 		</div>
 
 		<footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
