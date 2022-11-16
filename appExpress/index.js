@@ -108,11 +108,12 @@ app.post('/Enviar',function(req, res){
    console.log("mag: ",magB);
    console.log("piro: ",piroB);
    console.log("gas: ",gasB);
+   console.log("");
 
    //----------------------------------------------------------------------Twilio
  // Instalar mpm i twilio 
-    const TWILIO_ID = 'AC0ae00199225e55bd898190cf8e2dca57';
-    const TWILIO_SK = '610ad08361549521aab91f84d6cc6f80';
+    const TWILIO_ID = '';
+    const TWILIO_SK = '';
     const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
      if(piroB==true && alarma == 'ON'){
