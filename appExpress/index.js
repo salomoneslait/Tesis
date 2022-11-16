@@ -9,7 +9,7 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "https://fb00-2800-484-4f83-b79f-64ec-472d-c0ad-6ea3.ngrok.io"
+let backend_url = process.env.BACKEND_URL || "https://789f-2800-e2-bf80-c44-a4d6-e297-4822-4e2c.ngrok.io"
 
 var gas = 'false';
 var mag = 'false';
@@ -97,13 +97,17 @@ app.post('/Enviar',function(req, res){
    piro = req.query.piro;
    gas = req.query.gas;
    
-   console.log("mag: ",mag);
-   console.log("piro: ",piro);
-   console.log("gas: ",gas);
+   // console.log("mag: ",mag);
+   // console.log("piro: ",piro);
+   // console.log("gas: ",gas);
 
    magB = (mag.toLowerCase() === 'true');
    piroB = (piro.toLowerCase() === 'true');
    gasB = (gas.toLowerCase() === 'true');
+
+   console.log("mag: ",magB);
+   console.log("piro: ",piroB);
+   console.log("gas: ",gasB);
 
    //----------------------------------------------------------------------Twilio
  // Instalar mpm i twilio 
