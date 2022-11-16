@@ -34,7 +34,7 @@ void setup() {
   my_homekit_setup();
 }
 
-int espera = 5000;
+int espera = 1000;
 unsigned long tiempoActual = 0;
 String magg,piroo,gass;
 

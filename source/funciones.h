@@ -159,17 +159,25 @@ void Enviar(){
   http.addHeader("Content-Type", "text/plain");
   //url = "http://192.168.15.32/Enviar?Temperatura="+(String)temperatura+"&Senha=admin";//IP NodeJS
   url = "http://"+frontUrl+"/Enviar?mag="+sensormag+"&piro="+presencia+"&gas="+sensorHumo;//IP NodeJS
-  Serial.println(url);
-  http.begin(url.c_str());
-  httpResponseCode = http.POST("");
-  delay(300);
-  if (httpResponseCode > 0) {
-    Serial.print("HTTP Response code: ");
-    Serial.println(httpResponseCode);
-  }else {
-    Serial.println("sin respuesta");
+
+  if (url == auxURL){
+    Serial.println(" estado de los sensores sin cambio");
   }
-  http.end();
+  else{ 
+    auxURL = url;
+    Serial.println(url);
+    http.begin(url.c_str());
+    httpResponseCode = http.POST("");
+    delay(300);
+    if (httpResponseCode > 0) {
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpResponseCode);
+    }else {
+      Serial.println("sin respuesta");
+    }
+    http.end();
+  }
+  
 }
 
 //---Homekit
@@ -459,10 +467,11 @@ void SensorPiro(){
 void SensorHumo(){
    valor_humo = analogRead(s_mq2);
   if(valor_humo>=1950){
-    Serial.print("Hay una fuga de gas");
+    Serial.println("Hay una fuga de gas");
     sensorHumo = "true";
   }
   else{
     sensorHumo = "false";
   }
+ 
 }
