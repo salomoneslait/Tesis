@@ -62,6 +62,11 @@ app.post("/tomacorrientes", (req, res) => {
    res.redirect('/');
 })
 
+app.post("/alarma",(req, res) =>{
+   console.log(req.body);
+   res.redirect("/");
+})
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
