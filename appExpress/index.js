@@ -19,15 +19,17 @@ var magB = false;
 var piroB = false;
 var gasB = false;
 
+var alarma;
+
 app.get('/', function(req, res){
 
    //let magB = (mag.toLowerCase() === 'true');
    //let piroB = (piro.toLowerCase() === 'true');
    //let gasB = (gas.toLowerCase() === 'true');
 
-   console.log(magB);
-   console.log(piroB);
-   console.log(gasB);
+   // console.log(magB);
+   // console.log(piroB);
+   // console.log(gasB);
 
    res.render('index',{incendio:gasB ,puerta:magB , proximidad:piroB});
 });
@@ -64,6 +66,9 @@ app.post("/tomacorrientes", (req, res) => {
 
 app.post("/alarma",(req, res) =>{
    console.log(req.body);
+
+   alarma = req.body.encendido;
+
    res.redirect("/");
 })
 
@@ -106,25 +111,25 @@ app.post('/Enviar',function(req, res){
     const TWILIO_SK = '';
     const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
-     if(piroB==true){
+     if(piroB==true && alarma == 'ON'){
       client.messages.create({
           body: 'sensor de presencia activo', 
           from: 'whatsapp:+14155238886', 
-         // to: 'whatsapp:+573159268068'       
-          to: 'whatsapp:+573112541022' 
+          to: 'whatsapp:+573159268068'       
+         //to: 'whatsapp:+573112541022' 
        }).then(message => console.log(message.sid));
     } else if (magB==true){
        client.messages.create({
           body: 'sensor de puerta activo', 
           from: 'whatsapp:+14155238886',       
-         // to: 'whatsapp:+573159268068'       
-           to: 'whatsapp:+573112541022'
+          to: 'whatsapp:+573159268068'       
+          // to: 'whatsapp:+573112541022'
        }).then(message => console.log(message.sid));
     }else if(gasB==true){
        client.messages.create({
           body: 'sensor de gas activo', 
-          //to: 'whatsapp:+573159268068'       
-           to: 'whatsapp:+573112541022'  
+          to: 'whatsapp:+573159268068'       
+          // to: 'whatsapp:+573112541022'  
        }).then(message => console.log(message.sid));
     } else {
        console.log("sensores inactivos");
