@@ -72,6 +72,21 @@ app.post("/alarma",(req, res) =>{
    res.redirect("/");
 })
 
+app.post("/garaje", (req, res) => {
+   console.log(req.body);
+
+   request
+   .post(`${backend_url}/garaje`)
+   .send(req.body)
+   .set('X-API-Key', 'foobar')
+   .set('Accept', 'application/json')
+   .then(res => {
+      alert('yay got ' + JSON.stringify(res.body));
+   });
+   res.redirect('/');
+})
+
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
