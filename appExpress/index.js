@@ -9,12 +9,30 @@ app.use(express.urlencoded())
 
 var http = require('http');
 
-let backend_url = process.env.BACKEND_URL || "https://12f1-2800-e2-bf80-c44-1937-f588-ebab-a577.ngrok.io"
+let backend_url = process.env.BACKEND_URL || "https://fb00-2800-484-4f83-b79f-64ec-472d-c0ad-6ea3.ngrok.io"
+
+var gas = 'false';
+var mag = 'false';
+var piro = 'false';
+
+var magB = false;
+var piroB = false;
+var gasB = false;
 
 app.get('/', function(req, res){
-   res.render('index');
+
+   //let magB = (mag.toLowerCase() === 'true');
+   //let piroB = (piro.toLowerCase() === 'true');
+   //let gasB = (gas.toLowerCase() === 'true');
+
+   console.log(magB);
+   console.log(piroB);
+   console.log(gasB);
+
+   res.render('index',{incendio:gasB ,puerta:magB , proximidad:piroB});
 });
-// sudo docker run -dit --env BACKEND_URL=b78a-181-206-21-114.ngrok.io -p 3030:3030 front:boton 
+
+// sudo docker run -dit --env BACKEND_URL=https://0e3f-2800-e2-bf80-c44-b92c-bacf-1997-7f6a.ngrok.io -p 3000:3000 front:latest 
 app.post("/", (req, res) => {
    console.log(req.body);
 
@@ -27,7 +45,7 @@ app.post("/", (req, res) => {
       alert('yay got ' + JSON.stringify(res.body));
    });
 
-   res.redirect("/");
+   res.redirect('/');
 })
 
 app.post("/tomacorrientes", (req, res) => {
@@ -41,8 +59,7 @@ app.post("/tomacorrientes", (req, res) => {
    .then(res => {
       alert('yay got ' + JSON.stringify(res.body));
    });
-
-   res.redirect("/");
+   res.redirect('/');
 })
 
 app.set('view engine', 'pug');
@@ -59,8 +76,58 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
-app.post('/', function(req, res){
-   console.log(req.body);
-   res.send("recieved your request!");
+const SECRET_KEY = "admin";
+var dados = [];
+var info;
+
+
+app.post('/Enviar',function(req, res){
+   
+   mag = req.query.mag;
+   piro = req.query.piro;
+   gas = req.query.gas;
+   
+   console.log("mag: ",mag);
+   console.log("piro: ",piro);
+   console.log("gas: ",gas);
+
+   magB = (mag.toLowerCase() === 'true');
+   piroB = (piro.toLowerCase() === 'true');
+   gasB = (gas.toLowerCase() === 'true');
+
+   //----------------------------------------------------------------------Twilio
+ // Instalar mpm i twilio 
+    const TWILIO_ID = '';
+    const TWILIO_SK = '';
+    const client=require('twilio')(TWILIO_ID,TWILIO_SK);
+
+     if(piroB==true){
+      client.messages.create({
+          body: 'sensor de presencia activo', 
+          from: 'whatsapp:+14155238886', 
+         // to: 'whatsapp:+573159268068'       
+          to: 'whatsapp:+573112541022' 
+       }).then(message => console.log(message.sid));
+    } else if (magB==true){
+       client.messages.create({
+          body: 'sensor de puerta activo', 
+          from: 'whatsapp:+14155238886',       
+         // to: 'whatsapp:+573159268068'       
+           to: 'whatsapp:+573112541022'
+       }).then(message => console.log(message.sid));
+    }else if(gasB==true){
+       client.messages.create({
+          body: 'sensor de gas activo', 
+          //to: 'whatsapp:+573159268068'       
+           to: 'whatsapp:+573112541022'  
+       }).then(message => console.log(message.sid));
+    } else {
+       console.log("sensores inactivos");
+    }
+
+//------------------------------------------------------------------FIN Twilio
+
+   res.sendStatus(200);
+  
 });
 app.listen(3000);
