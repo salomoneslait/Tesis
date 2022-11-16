@@ -97,13 +97,17 @@ app.post('/Enviar',function(req, res){
    piro = req.query.piro;
    gas = req.query.gas;
    
-   console.log("mag: ",mag);
-   console.log("piro: ",piro);
-   console.log("gas: ",gas);
+   // console.log("mag: ",mag);
+   // console.log("piro: ",piro);
+   // console.log("gas: ",gas);
 
    magB = (mag.toLowerCase() === 'true');
    piroB = (piro.toLowerCase() === 'true');
    gasB = (gas.toLowerCase() === 'true');
+
+   console.log("mag: ",magB);
+   console.log("piro: ",piroB);
+   console.log("gas: ",gasB);
 
    //----------------------------------------------------------------------Twilio
  // Instalar mpm i twilio 
