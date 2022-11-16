@@ -116,28 +116,35 @@ app.post('/Enviar',function(req, res){
     const client=require('twilio')(TWILIO_ID,TWILIO_SK);
 
      if(piroB==true && alarma == 'ON'){
-      client.messages.create({
-          body: 'sensor de presencia activo', 
+     	console.log("presencia dectatada");
+	     client.messages.create({
+          body: 'Presencia detectada', 
           from: 'whatsapp:+14155238886', 
           to: 'whatsapp:+573159268068'       
          //to: 'whatsapp:+573112541022' 
        }).then(message => console.log(message.sid));
-    } else if (magB==true){
+     }
+
+     if (magB==true){
+     console.log("sensor magnetico activo");
        client.messages.create({
           body: 'sensor de puerta activo', 
           from: 'whatsapp:+14155238886',       
           to: 'whatsapp:+573159268068'       
           // to: 'whatsapp:+573112541022'
        }).then(message => console.log(message.sid));
-    }else if(gasB==true){
+     }
+
+     if (gasB==true){
+       console.log("sensor de gas activo");
        client.messages.create({
-          body: 'sensor de gas activo', 
-          to: 'whatsapp:+573159268068'       
-          // to: 'whatsapp:+573112541022'  
+          body: 'sensor de gas activo',
+          from: 'whatsapp:+14155238886',
+          to: 'whatsapp:+573159268068'
+          // to: 'whatsapp:+573112541022'
        }).then(message => console.log(message.sid));
-    } else {
-       console.log("sensores inactivos");
-    }
+     }
+
 
 //------------------------------------------------------------------FIN Twilio
 
