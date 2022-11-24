@@ -72,8 +72,6 @@ float current_hue_5 = 0.0;
 int rgb_colors_5[3];
 
 
-
-
 //sensores 
 
 uint16_t valor_puerta=0, valor_presencia=0, valor_humo=0;
@@ -82,3 +80,9 @@ String presencia, sensormag, sensorHumo;
 #define s_mq2 32      //Sensor de humo y gas MQ2
 #define hall 35      //Pin controlador de efecto hall
 #define piro 34      //Pin controlador de sensor de presencia
+
+// Garaje
+
+Servo myservo;
+int servoPin = 13;
+ 

@@ -154,6 +154,36 @@ void rutaTomacorrientes(){
   });
 }
 
+void rutaGaraje(){
+  server.on(
+    "/garaje",
+    HTTP_POST,
+  [](AsyncWebServerRequest * request) {},
+  NULL,
+  [](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
+
+    for (size_t i = 0; i < len; i++) {
+      //Serial.write(data[i]);
+    }
+    Serial.println("peticion recibida puerta");
+    peticion = converter(data);
+    // encendido: 'ON'
+    peticion = peticion.substring(peticion.indexOf("{encendido: ") + 15, peticion.indexOf("}")-1);
+
+    if (peticion == "ON"){
+      myservo.write(0);
+      Serial.println("Abriendo garaje");
+    }
+    if (peticion == "OFF"){
+      myservo.write(75);
+      Serial.println("Cerrando garaje");
+    }
+       
+    request->send(200);
+  });
+
+}
+
 void Enviar(){
   HTTPClient http;
   http.addHeader("Content-Type", "text/plain");
