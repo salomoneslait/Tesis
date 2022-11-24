@@ -63,7 +63,7 @@ void updateColor()
       Serial.println(b);
       //pixels.setBrightness(b);
       //pixels.setPixelColor(1, pixels.Color(rgb_colors[0],rgb_colors[1],rgb_colors[2]));
-      pixels.setPixelColor(0, pixels.Color(rgb_colors[0]*b/100,rgb_colors[1]*b/100,rgb_colors[2]*b/100));
+      pixels.setPixelColor(3, pixels.Color(rgb_colors[0]*b/100,rgb_colors[1]*b/100,rgb_colors[2]*b/100));
       pixels.show();
 
     }
@@ -71,7 +71,7 @@ void updateColor()
   {
       Serial.println("is_on == false");
       //pixels.setBrightness(0);
-      pixels.setPixelColor(0,0,0,0);
+      pixels.setPixelColor(3,0,0,0);
       pixels.show();
   }
 }

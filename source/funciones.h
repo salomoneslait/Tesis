@@ -126,9 +126,9 @@ void rutaTomacorrientes(){
     String estadoS = peticion.substring(peticion.indexOf("encendido") + 12, peticion.length() - 1);
     bool estado;
     if (estadoS == "ON") {
-      estado = HIGH;
-    } else if (estadoS == "OFF") {
       estado = LOW;
+    } else if (estadoS == "OFF") {
+      estado = HIGH;
     }
 
     switch (espacio){
