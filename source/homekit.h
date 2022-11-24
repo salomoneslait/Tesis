@@ -41,10 +41,12 @@ extern "C" homekit_characteristic_t cha_5_bright;
 extern "C" homekit_characteristic_t cha_5_sat;
 extern "C" homekit_characteristic_t cha_5_hue;
 
-extern "C" homekit_characteristic_t cha_switch_on;
+//-------- Tomacorrientes --------
+extern "C" homekit_characteristic_t cha_switch_1_on;
 
 static uint32_t next_heap_millis = 0;
 
+// ------ Luces ------------
 //habitacion
 void updateColor()
 {
@@ -457,7 +459,19 @@ void set_bright_5(const homekit_value_t v) {
 
     updateColor5();
 }
+
+//------- Tomacorrientes -------
+
+void cha_switch_1_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_1_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay1, on ? LOW : HIGH);
+}
+
 void my_homekit_setup() {
+
+  //-------- Luces -------
   //habitacion
   rgb_colors[0] = 255;
   rgb_colors[1] = 255;
@@ -512,6 +526,10 @@ void my_homekit_setup() {
   cha_5_bright.setter = set_bright_5;
   cha_5_sat.setter = set_sat_5;
   cha_5_hue.setter = set_hue_5;
+
+  //-------Tomacorrientes ------
+
+  cha_switch_1_on.setter = cha_switch_1_on_setter;
   
   arduino_homekit_setup(&accessory_config);
 

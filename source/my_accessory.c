@@ -37,6 +37,11 @@ homekit_characteristic_t cha_5_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 50);
 homekit_characteristic_t cha_5_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
 homekit_characteristic_t cha_5_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
 
+// ------ Tomacorrientes ------
+
+//Habitacion 
+homekit_characteristic_t cha_switch_1_on = HOMEKIT_CHARACTERISTIC_(ON, false);
+
 homekit_accessory_t *accessories[] = {
 
     //habitacion
@@ -147,7 +152,25 @@ homekit_accessory_t *accessories[] = {
         }),
         NULL
     }),
-   //--------------------------------
+   //-------------------------------- Tomacorrientes -------------------
+   //habitacion
+   HOMEKIT_ACCESSORY(.id=6, .category=homekit_accessory_category_switch, .services=(homekit_service_t*[]) {
+        HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) {
+            HOMEKIT_CHARACTERISTIC(NAME, "Habitacion"),
+            HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Arduino HomeKit"),
+            HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "0123456"),
+            HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266/ESP32"),
+            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "1.0"),
+            HOMEKIT_CHARACTERISTIC(IDENTIFY, my_accessory_identify),
+            NULL
+        }),
+   HOMEKIT_SERVICE(SWITCH, .primary=true, .characteristics=(homekit_characteristic_t*[]){
+      &cha_switch_1_on,
+      &cha_name,
+      NULL
+    }),
+        NULL
+    }),
     
     NULL
 };
