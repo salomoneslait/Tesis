@@ -85,7 +85,7 @@ homekit_accessory_t *accessories[] = {
     //baño
     HOMEKIT_ACCESSORY(.id=3, .category=homekit_accessory_category_lightbulb, .services=(homekit_service_t*[]) {
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) {
-            HOMEKIT_CHARACTERISTIC(NAME, "baño"),
+            HOMEKIT_CHARACTERISTIC(NAME, "Baño"),
             HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Arduino HomeKit"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "0123456"),
             HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266/ESP32"),
@@ -107,7 +107,7 @@ homekit_accessory_t *accessories[] = {
     //cocina
     HOMEKIT_ACCESSORY(.id=4, .category=homekit_accessory_category_lightbulb, .services=(homekit_service_t*[]) {
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) {
-            HOMEKIT_CHARACTERISTIC(NAME, "cocina"),
+            HOMEKIT_CHARACTERISTIC(NAME, "Cocina"),
             HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Arduino HomeKit"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "0123456"),
             HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266/ESP32"),
@@ -129,7 +129,7 @@ homekit_accessory_t *accessories[] = {
     //sala
     HOMEKIT_ACCESSORY(.id=5, .category=homekit_accessory_category_lightbulb, .services=(homekit_service_t*[]) {
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) {
-            HOMEKIT_CHARACTERISTIC(NAME, "sala"),
+            HOMEKIT_CHARACTERISTIC(NAME, "Sala"),
             HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Arduino HomeKit"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "0123456"),
             HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266/ESP32"),

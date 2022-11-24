@@ -95,7 +95,7 @@ void updateColor2()
   
       //pixels.setBrightness(b);
       //pixels.setPixelColor(1, pixels.Color(rgb_colors[0],rgb_colors[1],rgb_colors[2]));
-      pixels.setPixelColor(1, pixels.Color(rgb_colors_2[0]*b/100,rgb_colors_2[1]*b/100,rgb_colors_2[2]*b/100));
+      pixels.setPixelColor(0, pixels.Color(rgb_colors_2[0]*b/100,rgb_colors_2[1]*b/100,rgb_colors_2[2]*b/100));
       pixels.show();
 
     }
@@ -103,7 +103,7 @@ void updateColor2()
   {
       Serial.println("is_2_on == false");
       //pixels.setBrightness(0);
-      pixels.setPixelColor(1,0,0,0);
+      pixels.setPixelColor(0,0,0,0);
       pixels.show();
   }
 }
@@ -127,7 +127,7 @@ void updateColor3()
   
       //pixels.setBrightness(b);
       //pixels.setPixelColor(1, pixels.Color(rgb_colors[0],rgb_colors[1],rgb_colors[2]));
-      pixels.setPixelColor(2, pixels.Color(rgb_colors_3[0]*b/100,rgb_colors_3[1]*b/100,rgb_colors_3[2]*b/100));
+      pixels.setPixelColor(1,pixels.Color(rgb_colors_3[0]*b/100,rgb_colors_3[1]*b/100,rgb_colors_3[2]*b/100));
       pixels.show();
 
     }
@@ -135,7 +135,7 @@ void updateColor3()
   {
       Serial.println("is_3_on == false");
       //pixels.setBrightness(0);
-      pixels.setPixelColor(2,0,0,0);
+      pixels.setPixelColor(1,0,0,0);
       pixels.show();
   }
 }
@@ -159,7 +159,7 @@ void updateColor4()
   
       //pixels.setBrightness(b);
       //pixels.setPixelColor(1, pixels.Color(rgb_colors[0],rgb_colors[1],rgb_colors[2]));
-      pixels.setPixelColor(3, pixels.Color(rgb_colors_4[0]*b/100,rgb_colors_4[1]*b/100,rgb_colors_4[2]*b/100));
+      pixels.setPixelColor(2, pixels.Color(rgb_colors_4[0]*b/100,rgb_colors_4[1]*b/100,rgb_colors_4[2]*b/100));
       pixels.show();
 
     }
@@ -167,7 +167,7 @@ void updateColor4()
   {
       Serial.println("is_4_on == false");
       //pixels.setBrightness(0);
-      pixels.setPixelColor(3,0,0,0);
+      pixels.setPixelColor(2,0,0,0);
       pixels.show();
   }
 }
