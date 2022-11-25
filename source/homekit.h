@@ -52,6 +52,10 @@ extern "C" homekit_characteristic_t cha_switch_3_on;
 //Sala
 extern "C" homekit_characteristic_t cha_switch_4_on;
 
+//----- Garaje ------
+extern "C" homekit_characteristic_t cha_door;
+
+
 static uint32_t next_heap_millis = 0;
 
 // ------ Luces ------------
@@ -502,13 +506,18 @@ void cha_switch_4_on_setter(const homekit_value_t value) {
   digitalWrite(Relay4, on ? LOW : HIGH);
 }
 
-//Puerta
-//void cha_puerta_on_setter(const homekit_value_t value) {
-//  bool on = value.bool_value;
-//  cha_puerta_on.value.bool_value = on;  //sync the value
-//  LOG_D("Switch: %s", on ? "ON" : "OFF");
-//  digitalWrite(Relay1, on ? LOW : HIGH);
-//}
+// ----- Puerta -----
+void cha_door_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_door.value.bool_value = on;  //sync the value
+  LOG_D("door: %s", on ? "open" : "close");
+  if (on){
+    myservo.write(0);
+  }
+  else {
+    myservo.write(75);
+  }
+}
 
 void my_homekit_setup() {
 
@@ -578,6 +587,10 @@ void my_homekit_setup() {
   cha_switch_3_on.setter = cha_switch_3_on_setter;
   //Sala
   cha_switch_4_on.setter = cha_switch_4_on_setter;
+
+  //------- Puerta Garaje ------
+
+  cha_door.setter = cha_door_setter;
   
   arduino_homekit_setup(&accessory_config);
 
