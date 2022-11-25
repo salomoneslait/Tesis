@@ -42,7 +42,15 @@ extern "C" homekit_characteristic_t cha_5_sat;
 extern "C" homekit_characteristic_t cha_5_hue;
 
 //-------- Tomacorrientes --------
+
+//Habitacion
 extern "C" homekit_characteristic_t cha_switch_1_on;
+//Baño
+extern "C" homekit_characteristic_t cha_switch_2_on;
+//Cocina
+extern "C" homekit_characteristic_t cha_switch_3_on;
+//Sala
+extern "C" homekit_characteristic_t cha_switch_4_on;
 
 static uint32_t next_heap_millis = 0;
 
@@ -462,12 +470,45 @@ void set_bright_5(const homekit_value_t v) {
 
 //------- Tomacorrientes -------
 
+//Habitacion
 void cha_switch_1_on_setter(const homekit_value_t value) {
   bool on = value.bool_value;
   cha_switch_1_on.value.bool_value = on;  //sync the value
   LOG_D("Switch: %s", on ? "ON" : "OFF");
   digitalWrite(Relay1, on ? LOW : HIGH);
 }
+
+//Baño
+void cha_switch_2_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_2_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay2, on ? LOW : HIGH);
+}
+
+//Cocina
+void cha_switch_3_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_3_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay3, on ? LOW : HIGH);
+}
+
+//Sala
+void cha_switch_4_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_4_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay4, on ? LOW : HIGH);
+}
+
+//Puerta
+//void cha_puerta_on_setter(const homekit_value_t value) {
+//  bool on = value.bool_value;
+//  cha_puerta_on.value.bool_value = on;  //sync the value
+//  LOG_D("Switch: %s", on ? "ON" : "OFF");
+//  digitalWrite(Relay1, on ? LOW : HIGH);
+//}
 
 void my_homekit_setup() {
 
@@ -529,7 +570,14 @@ void my_homekit_setup() {
 
   //-------Tomacorrientes ------
 
+  //Habitacion
   cha_switch_1_on.setter = cha_switch_1_on_setter;
+  //Baño
+  cha_switch_2_on.setter = cha_switch_2_on_setter;
+  //Cocina
+  cha_switch_3_on.setter = cha_switch_3_on_setter;
+  //Sala
+  cha_switch_4_on.setter = cha_switch_4_on_setter;
   
   arduino_homekit_setup(&accessory_config);
 
