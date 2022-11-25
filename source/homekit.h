@@ -41,10 +41,24 @@ extern "C" homekit_characteristic_t cha_5_bright;
 extern "C" homekit_characteristic_t cha_5_sat;
 extern "C" homekit_characteristic_t cha_5_hue;
 
-extern "C" homekit_characteristic_t cha_switch_on;
+//-------- Tomacorrientes --------
+
+//Habitacion
+extern "C" homekit_characteristic_t cha_switch_1_on;
+//Baño
+extern "C" homekit_characteristic_t cha_switch_2_on;
+//Cocina
+extern "C" homekit_characteristic_t cha_switch_3_on;
+//Sala
+extern "C" homekit_characteristic_t cha_switch_4_on;
+
+//----- Garaje ------
+extern "C" homekit_characteristic_t cha_door;
+
 
 static uint32_t next_heap_millis = 0;
 
+// ------ Luces ------------
 //habitacion
 void updateColor()
 {
@@ -457,7 +471,57 @@ void set_bright_5(const homekit_value_t v) {
 
     updateColor5();
 }
+
+//------- Tomacorrientes -------
+
+//Habitacion
+void cha_switch_1_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_1_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay1, on ? LOW : HIGH);
+}
+
+//Baño
+void cha_switch_2_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_2_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay2, on ? LOW : HIGH);
+}
+
+//Cocina
+void cha_switch_3_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_3_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay3, on ? LOW : HIGH);
+}
+
+//Sala
+void cha_switch_4_on_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_switch_4_on.value.bool_value = on;  //sync the value
+  LOG_D("Switch: %s", on ? "ON" : "OFF");
+  digitalWrite(Relay4, on ? LOW : HIGH);
+}
+
+// ----- Puerta -----
+void cha_door_setter(const homekit_value_t value) {
+  bool on = value.bool_value;
+  cha_door.value.bool_value = on;  //sync the value
+  LOG_D("door: %s", on ? "open" : "close");
+  if (on){
+    myservo.write(0);
+  }
+  else {
+    myservo.write(75);
+  }
+}
+
 void my_homekit_setup() {
+
+  //-------- Luces -------
   //habitacion
   rgb_colors[0] = 255;
   rgb_colors[1] = 255;
@@ -512,6 +576,21 @@ void my_homekit_setup() {
   cha_5_bright.setter = set_bright_5;
   cha_5_sat.setter = set_sat_5;
   cha_5_hue.setter = set_hue_5;
+
+  //-------Tomacorrientes ------
+
+  //Habitacion
+  cha_switch_1_on.setter = cha_switch_1_on_setter;
+  //Baño
+  cha_switch_2_on.setter = cha_switch_2_on_setter;
+  //Cocina
+  cha_switch_3_on.setter = cha_switch_3_on_setter;
+  //Sala
+  cha_switch_4_on.setter = cha_switch_4_on_setter;
+
+  //------- Puerta Garaje ------
+
+  cha_door.setter = cha_door_setter;
   
   arduino_homekit_setup(&accessory_config);
 

@@ -23,6 +23,11 @@ void setup() {
   pinMode(Relay3, OUTPUT);
   pinMode(Relay4, OUTPUT);
 
+  digitalWrite(Relay1, HIGH);
+  digitalWrite(Relay2, HIGH);
+  digitalWrite(Relay3, HIGH);
+  digitalWrite(Relay4, HIGH);
+  
   // Conexión WIFI
   conexionWifi();
 
