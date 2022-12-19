@@ -34,7 +34,7 @@ app.get('/', function(req, res){
    res.render('index',{incendio:gasB ,puerta:magB , proximidad:piroB});
 });
 
-// sudo docker run -dit --env BACKEND_URL=https://0e3f-2800-e2-bf80-c44-b92c-bacf-1997-7f6a.ngrok.io -p 3000:3000 front:latest 
+// sudo docker run -dit --env BACKEND_URL=https://8a58-2800-e2-bf80-c44-14e2-e435-fae4-cd6.ngrok.io -p 3000:3000 front:final 
 app.post("/", (req, res) => {
    console.log(req.body);
 
@@ -141,7 +141,7 @@ app.post('/Enviar',function(req, res){
        }).then(message => console.log(message.sid));
      }
 
-     if (magB==true){
+     if (magB==true && alarma == 'ON'){
      console.log("sensor magnetico activo");
        client.messages.create({
           body: 'sensor de puerta activo', 
